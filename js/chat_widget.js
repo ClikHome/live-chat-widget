@@ -15,6 +15,7 @@ var bot_username = "Bot";
 var bot_msg_index;
 var bot_msg_length;
 var username;
+var phonenumber;
 var messages;
 var socket;
 var logs = [];
@@ -46,6 +47,7 @@ function main(mywidget) {
 }
 function init(){
     username = null;
+    phonenumber = null;
     messages = null;
     socket = null;
     bot_msg_index = 0;
@@ -81,6 +83,7 @@ function makeMinimizeWidget(mywidget){
                 </div> \
                 <div class="chat_input"> \
                     <input type="text" placeholder="What\'s your name?" id="username"/>\
+                    <input type="text" placeholder="What\'s your phone?" id="phonenumber"/>\
                     <input type="button" value="Go" class="submit_user" /> \
                 </div> \
             </div> \
@@ -176,11 +179,13 @@ function scroll_to(div){
 }
 $(document).on('click','#live-chat-161011 .submit_user', function(event){
     var user_name = $('#live-chat-161011 #username').val();
+    var phone_number = $('#live-chat-161011 #phonenumber').val();
     if(user_name != "" ) // && socket != null
     {
         $('#live-chat-161011 .chat-login').css('display','none');
         $('#live-chat-161011 .chat-body').css('display','block');
         username = user_name;
+        phonenumber = phone_number;
     }
 })
 $(document).on('click','#live-chat-161011 .send-msg-btn', function(){
